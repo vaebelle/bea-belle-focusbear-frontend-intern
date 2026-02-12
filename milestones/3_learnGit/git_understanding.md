@@ -122,6 +122,46 @@ A clear commit message allows team to understand the changes going on with the c
 ### How can poor commit messages cause issues later?
 Poor commit messages is equivalent to poor documentation of the codebase. If there are poor commit messages, it would cause misunderstandings and conflicts which would then compromise the group's progress. 
 
+---
+# Advanced Git Commands
+## Research
+### Git commands
+- git checkout main --<file> - restores a specific file from main without affecting other changes
+- git cherry-pick <commit> - apply a specific commit from another branch without merging the whole branch
+- git log - view commit history and understand how changes evolved
+- git blame <file> - see who lsat modified each line in a file and when
+
+## Tasks
+### Experiment with each command in my test repo:
+1. Modify a file -  I added another function that has the purpose of subtracting two integers. As shown in the image below, when I entered "git status" theres a prompt that main.cpp was modifed
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/75654af5-e6f9-4bea-9bcb-d9a8be83f622" />
+  
+2. Restore using checkout - I restored the original code by typing in "git checkout -- main.cpp" as shown in the image below. When I entered "git status", the prompt that says that the main.cpp was modified is already gone. 
+<img width="1920" height="1020" alt="Screenshot 2026-02-12 121048" src="https://github.com/user-attachments/assets/9a1737af-2751-4b8f-8d4f-986987196a8c" />
+
+3. Commit changes on a branch and cherry pick one commit into main. - I made a change on another branch by styling its display outputs. After that I went back to the main branch and cherry picked the commit I made from the other branch to apply its changes in my main branch. Refer to the image below.
+<img width="727" height="384" alt="image" src="https://github.com/user-attachments/assets/b4593b17-046b-4f89-a027-f497c1d5935f" />
+
+4. Use git log - I used git log to access and view the commit history. Refer to the image below.
+<img width="632" height="1007" alt="image" src="https://github.com/user-attachments/assets/651bdf5b-ea4d-4e9b-b809-4daf0eb51067" />
+
+5. Use git blame - I used git blame to identify who modified and other changes on a specific file. Refer to the image below.
+<img width="984" height="590" alt="image" src="https://github.com/user-attachments/assets/e1c2ab71-f30f-484f-85e6-0856515101f8" />
+
+## Reflections
+### What does each command do?
+Git checkout main -- <file> restores a specific file without affecting other changes. Git cherry-pick <commit>, updates the main branch with a selected commit from another existing branch in your repository. Git log allows developers to view history and changes made in the branch. Finally, git blame <File> allows developer to identify who modified and the changes made on a specific file. 
+
+### When would you use it in a real project?
+These commands are especially useful in long-running projects with multiple developers:  
+- `git checkout` can restore files accidentally modified.  
+- `git cherry-pick` allows you to pick important bug fixes or features from other branches without merging everything.  
+- `git log` helps understand the history of changes for debugging or planning new work.  
+- `git blame` is useful for tracing the origin of bugs or understanding why a particular change was made.
+
+### What surprised you while testing these commands?
+I was surprised by how powerful `git cherry-pick` is. It lets you bring in a single commit from another branch without merging the entire branch, which is very handy for managing bug fixes or updates selectively.
+
 
 
 

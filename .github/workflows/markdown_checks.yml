@@ -22,6 +22,6 @@ jobs:
 
       - name: Run Markdown lint
         run: markdownlint '**/*.md'
-
+        
       - name: Run Spell Check
         run: cspell '**/*.md'

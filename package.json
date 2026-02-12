@@ -14,7 +14,8 @@
     }
   },
   "lint-staged": {
-  "*.{md,MD,txt}": "cspell"
-}
-
+    "*.{md,MD,txt}": [
+      "npx cspell --no-progress"
+    ]
+  }
 }

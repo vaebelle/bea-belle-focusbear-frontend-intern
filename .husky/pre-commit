@@ -1,21 +1,2 @@
-#!/usr/bin/env sh
-
-FILES=$(git diff --cached --name-only --diff-filter=ACM)
-
-# If no files staged, exit cleanly
-[ -z "$FILES" ] && exit 0
-
-FAILED=0
-
-for file in $FILES
-do
-  npx cspell "$file" || FAILED=1
-done
-
-# Only fail if spell check failed
-if [ $FAILED -ne 0 ]; then
-  echo "❌ Spell check failed"
-  exit 1
-fi
-
-exit 0
+# Only check staged files
+npx lint-staged --allow-empty

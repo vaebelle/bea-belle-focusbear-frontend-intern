@@ -162,6 +162,48 @@ These commands are especially useful in long-running projects with multiple deve
 ### What surprised you while testing these commands?
 I was surprised by how powerful `git cherry-pick` is. It lets you bring in a single commit from another branch without merging the entire branch, which is very handy for managing bug fixes or updates selectively.
 
+---
+# Merge Conflicts and Conflict Resolution
+
+## Research
+### Causes of merge conflicts in Git
+Merge conflicts occur when Git cannot automatically reconcile differences between branches. Common causes include:
+- **Concurrent edits to the same line of a file**: Two developers modify the same line in different branches.  
+- **Changes in overlapping regions**: One branch deletes a line or section that another branch modifies.  
+- **File renames or moves**: A file is renamed or moved in one branch while being modified in another.  
+- **Binary file changes**: Git cannot automatically merge changes to binary files like images or compiled files.  
+- **Complex merges with multiple branches**: When many branches with overlapping changes are merged at once, conflicts are more likely.
+
+Merge conflicts require manual intervention to decide which changes to keep before completing the merge.
+
+## Tasks
+1. Create a merge conflict in your test repo by creating a branch and editing a file, switching back to `main`.
+I created a merge conflict by changing a code my test_repo branch that is very different from the main branch. I modified the same line from different branches that cannot be easily mered without manually checking it. Please refer to the image below. 
+<img width="1912" height="458" alt="image" src="https://github.com/user-attachments/assets/0a65afca-d3dc-4af2-b14d-341fb1aad532" />
+
+2. Switch back to main and make a conflicting edit in the same file.
+I went back to my IDE to resolve the conflict and accepted the incoming change rather than the current commit. Refer to the image below.
+<img width="1915" height="1018" alt="image" src="https://github.com/user-attachments/assets/e685958b-7aa4-4071-91ee-d0a0460509c6" />
+
+3. Merge the branch back into main
+After resolving the conflict, I merged the updated code into my main branch. Please refer to the image below.
+<img width="1268" height="236" alt="image" src="https://github.com/user-attachments/assets/e3503ac9-3bdd-4d7a-a6b6-682c664fdb6a" />
+
+## Reflection
+### What caused the conflict?
+The reason of the conflict is that I changed a similar code in the same line in both the main branch and my test branch, hence creating a merge conflict when I tried to merge my commit from my test branch into my main branch. 
+
+### How did you resolve it?
+I have to manually resolve it my IDE by reviewing the changes and choose which commit to accept. 
+
+### What did you learn?
+I learned that Git protects your code by preventing automatic merges when changes conflict, and it provides clear markers so you can safely resolve conflicts without losing work.
+
+
+
+
+
+
 
 
 

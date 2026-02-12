@@ -61,4 +61,67 @@ I would use git bisect when I am unclear of which commit that was changed involv
 ### How does it compare to manually reviewing commits?
 Compared to manually reviewing commits, git bisect is much faster, automatd, and more structured. Manual review can be time-consuming and error-prone.
 
+---
+# Commit Messages
+## Research
+### Best Practices for writing commit messages
+Good commit messages help developers understand the history of changes, provide context for decisions, and make collaboration easier for current and future team members.
+
+#### General Guidelines
+- Be clear and concise so others can quickly understand the change.
+- Explain why the change was made, not just what changed.
+- Write messages with future readers in mind.
+
+#### Structure
+- Use a short subject line that summarizes the change.
+- Write the subject in imperative mood (for example, “Add login validation”).
+- Keep the subject line brief and avoid unnecessary punctuation.
+- Add a body only when more explanation is needed.
+- Format longer descriptions into readable lines.
+
+#### Content Tips
+- Keep each commit focused on a single logical change.
+- Be specific and avoid vague messages.
+- Reference related issues or tickets when applicable.
+
+#### Conventions
+- Follow a consistent commit message format within your team.
+- Consider using structured conventions (such as prefixes like feat, fix, docs) for clarity and organization.
+
+references: 
+- https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/
+- https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g#comments-list
+
+## Tasks
+### Explore open-source Github project
+reference used: https://github.com/facebook/react/commits/main/
+
+The commit messages found in the repository link I referenced above show good way of writing commit messages since these follow guidelines like clarity, scope tagging, and linking to work tracking as shown in figure 1. 
+
+Figure 1:
+<img width="1234" height="552" alt="image" src="https://github.com/user-attachments/assets/1542f986-1033-47eb-bac7-c4d6d732ae62" />
+
+### Making three commits in my repo with different commit message styles.
+Attached are images that shows different commit message styles I have done in my past project developments. 
+Figure 2: Vague Commit Message
+<img width="1305" height="110" alt="image" src="https://github.com/user-attachments/assets/06c1e04a-1c96-4680-aaa9-19728a7ebe34" />
+
+Figure 3: Overly detailed commit message
+<img width="1309" height="540" alt="image" src="https://github.com/user-attachments/assets/8252b21f-c63e-4cdf-ba3a-f444dc95260c" />
+
+Figure 4: Well-structured commit message
+<img width="1917" height="777" alt="image" src="https://github.com/user-attachments/assets/bfebd009-a91b-41ce-87a3-80e6d2f0bf75" />
+
+## Reflections
+### What makes a good commit message?
+A good commit message must be concise and specific; addressing the major changes in the code and identifying issues resolved. 
+
+### How does a clear commit message help in team collaboration?
+A clear commit message allows team to understand the changes going on with the code. It helps them stay aligned with the task and reduce confusion on the changes done by their other teammates. 
+
+### How can poor commit messages cause issues later?
+Poor commit messages is equivalent to poor documentation of the codebase. If there are poor commit messages, it would cause misunderstandings and conflicts which would then compromise the group's progress. 
+
+
+
 

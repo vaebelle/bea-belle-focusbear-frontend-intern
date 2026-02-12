@@ -1,0 +1,27 @@
+name: Markdown CI
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint-and-spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install markdownlint and cspell
+        run: |
+          npm install -g markdownlint-cli cspell
+
+      - name: Run Markdown lint
+        run: markdownlint '**/*.md'
+
+      - name: Run Spell Check
+        run: cspell '**/*.md'

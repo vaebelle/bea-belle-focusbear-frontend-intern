@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "cspell": "^9.6.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "markdownlint-cli": "^0.47.0"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{md,MD,txt}": [
+      "npx cspell --no-progress"
+    ]
+  }
+}

@@ -234,6 +234,45 @@ It helps developers assess if the code is ready for deployment and has no bugs/i
 ### what happens if two people edit the same file on different branches?
 There would be no conflict at all since they are working on the different branches. Their code changes will not affect each other. 
 
+---
+# Staging vs. Committing
+## Research
+### Difference between Staging and Committing
+Staging means marking your changes as ready to be included in the next commit. It allows you to review and organize which changes will be added.  While committing means saving those staged changes to the branch history, creating a permanent record of the changes in the repository.
+
+## Tasks
+1. Experiment with adding and commiting files in your repo
+I am used ot adding and commiting iles via the terminal. See image below as an example of me staging and commiting a file. 
+<img width="1277" height="241" alt="image" src="https://github.com/user-attachments/assets/60152e67-1431-4fdc-93f9-f298fdd0b7fb" />
+
+2. Modify a file and stage it but don't commit
+<img width="1915" height="1015" alt="image" src="https://github.com/user-attachments/assets/e7fea0f6-8a00-4214-999c-a3f9ba0e2b67" />
+
+3. Modify a file and check the status
+<img width="578" height="232" alt="image" src="https://github.com/user-attachments/assets/ef4a4e5b-7316-4433-9808-de0371be20ec" />
+
+4. Commit the file and observe the difference
+<img width="970" height="85" alt="image" src="https://github.com/user-attachments/assets/a0cecf1e-a4bd-4e03-b2b5-29e52dc7989b" />
+
+As observed, after I commit the file the staged main.cpp file was saved to the branch history. 
+
+## Reflection
+### What is the difference between staging and committting?
+Staging means marking your files that are ready to be included in the next commit while committing means saving the staged files. 
+
+### Why does Git separate these two steps?
+Git separates staging and committing to give developers control over which changes are included in a commit. This allows developers to review, organize, and decide exactly what should be saved to the branch history.
+
+### Why would you want to stage changes without committing?
+Staging changes without committing lets me prepare and track the files I am ready to commit while continuing to work on other parts of the project. 
+
+
+
+
+
+
+
+
 
 
 

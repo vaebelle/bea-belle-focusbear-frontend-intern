@@ -381,3 +381,248 @@ Proper error handling improves reliability in several ways:
 8. Maintainability: Clear error handling makes code intentions explicit and easier to understand
 
 By anticipating and handling errors proactively, we create more resilient applications that users can depend on.
+
+---
+
+# Refactoring Code for Simplicity
+
+## Research
+
+### Common Refactoring techniques
+
+Refactoring improves code structure without changing its external behavior. Common techniques include:
+
+1. Extract Method/Function
+   - Break long functions into smaller, focused ones
+   - Each function should do one thing well
+   - Improves readability and reusability
+
+2. Extract Variable
+   - Replace complex expressions with descriptive variable names
+   - Makes code self-documenting
+   - Reduces duplication of calculations
+
+3. Rename for Clarity
+   - Use descriptive names that reveal intent
+   - Avoid abbreviations and single-letter variables
+   - Make names searchable and pronounceable
+
+4. Simplify Conditionals
+   - Use guard clauses instead of nested if-else
+   - Replace complex conditions with well-named boolean variables
+   - Consider polymorphism or strategy pattern for multiple conditions
+
+5. Remove Duplication (DRY)
+   - Consolidate repeated code into shared functions
+   - Use loops, higher-order functions, or abstractions
+   - Maintain single source of truth
+
+6. Replace Magic Numbers with Constants
+   - Define named constants for literal values
+   - Makes code more maintainable
+   - Documents the meaning of values
+
+7. Simplify Data Structures
+   - Use appropriate data structures for the task
+   - Flatten nested structures when possible
+   - Consider using objects/maps instead of parallel arrays
+
+8. Use Built-in Methods and Libraries
+   - Replace manual loops with array methods (map, filter, reduce)
+   - Leverage standard library functions
+   - Reduces code and potential bugs
+
+9. Inline Unnecessary Code
+   - Remove intermediate variables that don't add clarity
+   - Eliminate functions that are only called once and don't simplify
+
+10. Replace Nested Conditionals with Early Returns
+    - Reduce indentation levels
+    - Make the main logic flow clearer
+    - Handle error cases first
+
+## Task
+
+1. Find an example of overly complicated code
+
+Overly complicated code:
+
+```javascript
+function processUserData(users) {
+  let result = [];
+  for (let i = 0; i < users.length; i++) {
+    if (users[i] !== null && users[i] !== undefined) {
+      if (users[i].age !== null && users[i].age !== undefined) {
+        if (users[i].age >= 18) {
+          if (users[i].country !== null && users[i].country !== undefined) {
+            if (users[i].country === 'USA' || users[i].country === 'Canada' || users[i].country === 'UK') {
+              let name = '';
+              if (users[i].firstName !== null && users[i].firstName !== undefined) {
+                name = name + users[i].firstName;
+              }
+              if (users[i].lastName !== null && users[i].lastName !== undefined) {
+                if (name.length > 0) {
+                  name = name + ' ';
+                }
+                name = name + users[i].lastName;
+              }
+              let obj = {};
+              obj.fullName = name;
+              obj.age = users[i].age;
+              obj.country = users[i].country;
+              if (users[i].email !== null && users[i].email !== undefined) {
+                obj.email = users[i].email.toLowerCase();
+              }
+              result.push(obj);
+            }
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+function calculateOrderTotal(items, tax, discount, shippingCost, promoCode) {
+  let total = 0;
+  for (let i = 0; i < items.length; i++) {
+    total = total + (items[i].price * items[i].quantity);
+  }
+  let subtotal = total;
+  if (discount !== null && discount !== undefined && discount > 0) {
+    total = total - (total * discount);
+  }
+  if (tax !== null && tax !== undefined && tax > 0) {
+    total = total + (total * tax);
+  }
+  if (promoCode !== null && promoCode !== undefined) {
+    if (promoCode === 'SAVE10') {
+      total = total - (total * 0.1);
+    } else if (promoCode === 'SAVE20') {
+      total = total - (total * 0.2);
+    } else if (promoCode === 'FREESHIP') {
+      shippingCost = 0;
+    }
+  }
+  if (shippingCost !== null && shippingCost !== undefined && shippingCost > 0) {
+    total = total + shippingCost;
+  }
+  return total;
+}
+```
+
+2. Refactor it to make it simpler and more readable
+
+Refactored code:
+
+```javascript
+function processUserData(users) {
+  const ELIGIBLE_COUNTRIES = ['USA', 'Canada', 'UK'];
+  const MIN_AGE = 18;
+  
+  return users
+    .filter(isValidUser)
+    .filter(user => user.age >= MIN_AGE)
+    .filter(user => ELIGIBLE_COUNTRIES.includes(user.country))
+    .map(transformUser);
+}
+
+function isValidUser(user) {
+  return user && user.age != null && user.country;
+}
+
+function transformUser(user) {
+  return {
+    fullName: buildFullName(user),
+    age: user.age,
+    country: user.country,
+    email: user.email?.toLowerCase() || ''
+  };
+}
+
+function buildFullName(user) {
+  const parts = [user.firstName, user.lastName].filter(Boolean);
+  return parts.join(' ');
+}
+
+function calculateOrderTotal(items, tax = 0, discount = 0, shippingCost = 0, promoCode = null) {
+  const subtotal = calculateSubtotal(items);
+  const discountedTotal = applyDiscount(subtotal, discount);
+  const promoTotal = applyPromoCode(discountedTotal, promoCode, shippingCost);
+  const taxedTotal = applyTax(promoTotal.total, tax);
+  const finalTotal = taxedTotal + promoTotal.shipping;
+  
+  return finalTotal;
+}
+
+function calculateSubtotal(items) {
+  return items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+}
+
+function applyDiscount(amount, discount) {
+  if (discount <= 0) return amount;
+  return amount * (1 - discount);
+}
+
+function applyPromoCode(amount, promoCode, shippingCost) {
+  const promoCodes = {
+    'SAVE10': { discount: 0.1, freeShipping: false },
+    'SAVE20': { discount: 0.2, freeShipping: false },
+    'FREESHIP': { discount: 0, freeShipping: true }
+  };
+  
+  const promo = promoCodes[promoCode];
+  
+  if (!promo) {
+    return { total: amount, shipping: shippingCost };
+  }
+  
+  return {
+    total: amount * (1 - promo.discount),
+    shipping: promo.freeShipping ? 0 : shippingCost
+  };
+}
+
+function applyTax(amount, tax) {
+  if (tax <= 0) return amount;
+  return amount * (1 + tax);
+}
+```
+
+## Reflection
+
+### What made the original code complex
+
+The original code was complex due to several factors:
+
+1. Deep nesting: Multiple levels of if statements made the logic hard to follow and increased cognitive load
+2. Imperative style: Manual loops and string concatenation instead of using declarative array methods
+3. Verbose null checks: Repeated `!== null && !== undefined` checks cluttered the code
+4. No separation of concerns: All logic was mixed together in single functions
+5. Magic strings and numbers: Hardcoded values like 'SAVE10' and 0.1 without explanation
+6. Poor naming: Variables like `obj`, `i`, and `result` didn't convey meaning
+7. Manual accumulation: Building objects and strings piece by piece instead of using cleaner patterns
+8. Mixed levels of abstraction: Low-level details mixed with high-level business logic
+9. Long functions: Functions tried to do too many things at once
+10. No default parameters: Had to check for null/undefined for every optional parameter
+11. Conditional chains: Long if-else chains for promo codes instead of using data structures
+12. Side effects on parameters: Modified shippingCost parameter value
+
+### How did refactoring improve it
+
+Refactoring improved the code significantly:
+
+1. Readability: Code now reads like a series of clear steps rather than nested logic
+2. Testability: Smaller functions are easier to test in isolation
+3. Maintainability: Changes to business logic (like adding new promo codes) require minimal code changes
+4. Reusability: Extracted functions can be used in other contexts
+5. Self-documenting: Function and variable names explain what the code does
+6. Reduced complexity: Each function has a single, clear purpose
+7. Better error handling: Easier to add validation and error messages to focused functions
+8. Modern JavaScript: Used optional chaining, default parameters, and array methods
+9. DRY principle: Eliminated repeated null checks and calculations
+10. Data-driven: Promo codes stored in a data structure instead of hard-coded in conditionals
+11. Immutability: Functions return new values instead of mutating parameters
+12. Declarative style: Array methods (filter, map, reduce) express intent clearly
+
+The refactored code is shorter, clearer, and more maintainable while doing exactly the same thing as the original.

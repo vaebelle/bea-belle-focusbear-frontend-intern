@@ -199,6 +199,43 @@ I have to manually resolve it my IDE by reviewing the changes and choose which c
 ### What did you learn?
 I learned that Git protects your code by preventing automatic merges when changes conflict, and it provides clear markers so you can safely resolve conflicts without losing work.
 
+---
+# Branching and Team Collaboration
+## Task
+1. Create a new branch in your Git desktop client
+I have already performed this already in different projects. Including this repository.
+
+Please refer to this repo: https://github.com/vaebelle/bea-belle-focusbear-frontend-intern
+
+Proof: <img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/10534909-4ba6-462d-b9e5-fab89f29ed73" />
+
+2. Make a small change in you repo and commit it to the new branch.
+I have tihs experience already and have performed it a couple of times. Including this repository.
+
+Please refer to this repo: https://github.com/vaebelle/test-repo/tree/test_branch
+
+Proof: <img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/53dd84cc-4703-4834-885a-f34d0db75d17" />
+
+3. Switch back to main and check your chanes are not there.
+I have tihs experience already and have performed it a couple of times. Including this repository.
+
+Please refer to this repo: https://github.com/vaebelle/bea-belle-focusbear-frontend-intern
+Proof:
+milestone-3-learn-git branch have changes that have are not in the main branch. (the branch is 5 commits ahead of main)
+<img width="1919" height="1030" alt="image" src="https://github.com/user-attachments/assets/d22928c6-771a-40a6-80b4-8ab360dec680" />
+
+## Reflection
+### Why is pushing directly to main problematic?
+Pushing new commits to main directly is problematic because there might still be issues with the new code changes that are directly added to the working and developed codebase in the main branch. This would create conflicts and bugs would be a hassle to track. 
+
+### How do branches help with reviewing code?
+It helps developers assess if the code is ready for deployment and has no bugs/issues. 
+
+### what happens if two people edit the same file on different branches?
+There would be no conflict at all since they are working on the different branches. Their code changes will not affect each other. 
+
+
+
 
 
 

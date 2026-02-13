@@ -937,3 +937,111 @@ Refactoring to eliminate duplication dramatically improved maintainability:
 11. Documentation: The rules object serves as clear documentation of validation requirements.
 
 12. Flexibility: Easy to extend with new validation types without duplicating logic.
+
+---
+
+# Naming Variables and Functions
+
+## Research
+
+### Best practices for naming variables and functions
+
+1. Be descriptive: Use names that clearly explain purpose (calculateTotal instead of calc)
+2. Use pronounceable names: Avoid abbreviations like genymdhms
+3. Make names searchable: Avoid single letters except in short loops
+4. Follow conventions: camelCase for functions/variables, PascalCase for classes, UPPER_SNAKE_CASE for constants
+5. Use verbs for functions: getName(), calculateArea(), isValid()
+6. Use nouns for variables: userName, totalPrice, productList
+7. Reveal intent: filteredActiveUsers instead of list2
+8. Avoid mental mapping: elapsedTimeInDays instead of d
+9. Add meaningful context: userEmail in a broader scope, just email within a User class
+
+## Task
+
+1. Find examples of unclear variable names in an existing codebase (or write your own)
+
+Code with unclear variable names:
+
+```javascript
+// Poor naming - unclear mathematical operations
+function calc(x, y) {
+  let r = x * y;
+  return r;
+}
+
+function proc(a, b, c) {
+  let t = a + b;
+  let v = t / c;
+  return v;
+}
+
+let n1 = 10;
+let n2 = 5;
+let res = calc(n1, n2);
+
+let p = 100;
+let d = 0.2;
+let fp = p - (p * d);
+
+function compute(arr) {
+  let s = 0;
+  for (let i = 0; i < arr.length; i++) {
+    s = s + arr[i];
+  }
+  let a = s / arr.length;
+  return a;
+}
+```
+
+2. Refactor the code by renaming variables/functions for better clarity
+
+Refactored code with clear naming:
+
+```javascript
+// Clear naming - understandable mathematical operations
+function calculateArea(width, height) {
+  const area = width * height;
+  return area;
+}
+
+function calculateAverage(valueOne, valueTwo, divisor) {
+  const sum = valueOne + valueTwo;
+  const average = sum / divisor;
+  return average;
+}
+
+const rectangleWidth = 10;
+const rectangleHeight = 5;
+const rectangleArea = calculateArea(rectangleWidth, rectangleHeight);
+
+const originalPrice = 100;
+const discountRate = 0.2;
+const finalPrice = originalPrice - (originalPrice * discountRate);
+
+function calculateMean(numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum = sum + numbers[i];
+  }
+  const mean = sum / numbers.length;
+  return mean;
+}
+```
+
+## Reflection
+
+### What makes a good variable or function name?
+
+The following practices are what makes a variable or function name good:
+
+1. Use of simple but direct terms.
+2. Consistent naming conventions
+3. Reusable
+
+### What issues can arise from poorly named variables?
+
+Issues like unclear documentation, confusion, and less likely to be maintained are most likely to arise from poorly named variables. 
+
+### How did refactoring improve code readability?
+
+It made developers or your team understand your code easier and with clarity. 

@@ -626,3 +626,314 @@ Refactoring improved the code significantly:
 12. Declarative style: Array methods (filter, map, reduce) express intent clearly
 
 The refactored code is shorter, clearer, and more maintainable while doing exactly the same thing as the original.
+
+---
+
+# Avoiding Code Duplication
+
+## Research
+
+### "Don't Repeat Yourself" (DRY) principle
+
+The DRY principle is a fundamental software development concept that states: "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."
+
+Key aspects of the DRY principle:
+
+1. Single Source of Truth
+   - Each piece of logic should exist in exactly one place
+   - Changes only need to be made once
+   - Reduces the risk of inconsistencies
+
+2. Code Reusability
+   - Extract common functionality into reusable functions or modules
+   - Promotes composition over duplication
+   - Enables building complex systems from simple, tested components
+
+3. Maintainability Benefits
+   - Bug fixes only need to be applied once
+   - Updates propagate automatically to all usage points
+   - Reduces technical debt over time
+
+4. Readability Improvements
+   - Well-named reusable functions serve as documentation
+   - Less code means less to read and understand
+   - Focuses attention on unique business logic
+
+5. When to Apply DRY
+   - Identical or very similar code appears multiple times
+   - The same business rule is implemented in different places
+   - Data transformations are repeated
+   - Validation logic is duplicated
+
+6. When not to Force DRY
+   - Code looks similar but serves different purposes
+   - Coupling components would reduce flexibility
+   - Abstraction would be more complex than duplication
+   - Different code paths may diverge in the future
+
+7. Common Patterns for DRY
+   - Extract functions for repeated logic
+   - Use loops and array methods instead of repetitive statements
+   - Create utility modules for cross-cutting concerns
+   - Use configuration objects instead of hardcoded values
+   - Leverage inheritance or composition for shared behavior
+
+## Task
+
+1. Find a section of code in your test repo with unnecessary repetition
+
+Code with duplication:
+
+```javascript
+// Validation functions with repeated patterns
+function validateUsername(username) {
+  if (!username) {
+    return { valid: false, error: 'Username is required' };
+  }
+  if (typeof username !== 'string') {
+    return { valid: false, error: 'Username must be a string' };
+  }
+  if (username.length < 3) {
+    return { valid: false, error: 'Username must be at least 3 characters' };
+  }
+  if (username.length > 20) {
+    return { valid: false, error: 'Username must be at most 20 characters' };
+  }
+  return { valid: true };
+}
+
+function validateEmail(email) {
+  if (!email) {
+    return { valid: false, error: 'Email is required' };
+  }
+  if (typeof email !== 'string') {
+    return { valid: false, error: 'Email must be a string' };
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return { valid: false, error: 'Email must be valid' };
+  }
+  return { valid: true };
+}
+
+function validatePassword(password) {
+  if (!password) {
+    return { valid: false, error: 'Password is required' };
+  }
+  if (typeof password !== 'string') {
+    return { valid: false, error: 'Password must be a string' };
+  }
+  if (password.length < 8) {
+    return { valid: false, error: 'Password must be at least 8 characters' };
+  }
+  if (password.length > 50) {
+    return { valid: false, error: 'Password must be at most 50 characters' };
+  }
+  return { valid: true };
+}
+
+// API calls with repeated fetch logic
+function getUser(id) {
+  return fetch(`https://api.example.com/users/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getToken()}`
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch user');
+    }
+    return response.json();
+  });
+}
+
+function getProduct(id) {
+  return fetch(`https://api.example.com/products/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getToken()}`
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch product');
+    }
+    return response.json();
+  });
+}
+
+function getOrder(id) {
+  return fetch(`https://api.example.com/orders/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getToken()}`
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch order');
+    }
+    return response.json();
+  });
+}
+```
+
+2. Refactor the code to eliminate duplication
+
+Refactored code:
+
+```javascript
+// Generic validation helper
+function createValidator(fieldName, rules) {
+  return function(value) {
+    // Required check
+    if (rules.required && !value) {
+      return { valid: false, error: `${fieldName} is required` };
+    }
+    
+    // Type check
+    if (rules.type && typeof value !== rules.type) {
+      return { valid: false, error: `${fieldName} must be a ${rules.type}` };
+    }
+    
+    // Min length check
+    if (rules.minLength && value.length < rules.minLength) {
+      return { valid: false, error: `${fieldName} must be at least ${rules.minLength} characters` };
+    }
+    
+    // Max length check
+    if (rules.maxLength && value.length > rules.maxLength) {
+      return { valid: false, error: `${fieldName} must be at most ${rules.maxLength} characters` };
+    }
+    
+    // Pattern check
+    if (rules.pattern && !rules.pattern.test(value)) {
+      return { valid: false, error: `${fieldName} must be valid` };
+    }
+    
+    return { valid: true };
+  };
+}
+
+// Create specific validators using the helper
+const validateUsername = createValidator('Username', {
+  required: true,
+  type: 'string',
+  minLength: 3,
+  maxLength: 20
+});
+
+const validateEmail = createValidator('Email', {
+  required: true,
+  type: 'string',
+  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+});
+
+const validatePassword = createValidator('Password', {
+  required: true,
+  type: 'string',
+  minLength: 8,
+  maxLength: 50
+});
+
+// Generic API helper
+function apiRequest(endpoint, options = {}) {
+  const defaultHeaders = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${getToken()}`
+  };
+  
+  const config = {
+    method: options.method || 'GET',
+    headers: { ...defaultHeaders, ...options.headers },
+    ...options
+  };
+  
+  return fetch(`https://api.example.com${endpoint}`, config)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`API request failed: ${response.statusText}`);
+      }
+      return response.json();
+    });
+}
+
+// Simplified specific API calls
+function getUser(id) {
+  return apiRequest(`/users/${id}`);
+}
+
+function getProduct(id) {
+  return apiRequest(`/products/${id}`);
+}
+
+function getOrder(id) {
+  return apiRequest(`/orders/${id}`);
+}
+
+// Can easily extend for other HTTP methods
+function createUser(userData) {
+  return apiRequest('/users', {
+    method: 'POST',
+    body: JSON.stringify(userData)
+  });
+}
+```
+
+## Reflection
+
+### What were the issues with the duplicated code
+
+The duplicated code had several significant issues:
+
+1. Maintenance Burden: Any change to validation logic required updating multiple functions, increasing the chance of mistakes or inconsistencies.
+
+2. Bug Multiplication: A bug in the repeated validation pattern would exist in all copies, requiring multiple fixes.
+
+3. Inconsistency Risk: Over time, the duplicated functions could diverge as developers update some but not others.
+
+4. Code Bloat: Hundreds of lines of repetitive code made the codebase larger and harder to navigate.
+
+5. Testing Overhead: Each duplicated function needed its own tests, multiplying testing effort.
+
+6. Difficult Updates: Adding a new validation rule or changing API configuration required touching many files.
+
+7. Cognitive Load: Developers had to read through similar code repeatedly to understand slight differences.
+
+8. Violation of DRY: The same business rules and patterns were encoded multiple times.
+
+9. Error-Prone: Copy-pasting code increases the risk of forgetting to update all parameters correctly.
+
+10. Lack of Flexibility: Adding new validators or API endpoints required significant boilerplate.
+
+### How did refactoring improve maintainability
+
+Refactoring to eliminate duplication dramatically improved maintainability:
+
+1. Single Source of Truth: Core logic now exists in one place, making it the authoritative implementation.
+
+2. Easier Updates: Adding new validation rules or API features only requires changing the helper functions.
+
+3. Consistent Behavior: All validators and API calls now share the same underlying logic, ensuring consistency.
+
+4. Reduced Code Size: Eliminated hundreds of lines of repetitive code, making the codebase more manageable.
+
+5. Better Testability: Testing the generic helpers thoroughly ensures all specific implementations work correctly.
+
+6. Clear Intent: The configuration-based approach makes it obvious what rules apply to each field.
+
+7. Reusability: The helper functions can be used for future validators and API endpoints with minimal code.
+
+8. Centralized Bug Fixes: Fixing a bug once in the helper automatically fixes it everywhere it's used.
+
+9. Scalability: Adding new validations or API endpoints is now trivial and requires minimal code.
+
+10. Declarative Style: Validators are now defined by their rules rather than imperative logic.
+
+11. Documentation: The rules object serves as clear documentation of validation requirements.
+
+12. Flexibility: Easy to extend with new validation types without duplicating logic.

@@ -1045,3 +1045,169 @@ Issues like unclear documentation, confusion, and less likely to be maintained a
 ### How did refactoring improve code readability?
 
 It made developers or your team understand your code easier and with clarity. 
+
+---
+
+# Writing Small, Focused Functions
+
+## Research
+
+### Best practices for writing small, single-purpose functions
+
+1. Follow Single Responsibility Principle where each function should only do one thing/purpose.
+2. Keep functions short.
+3. Function name should clearly state what is its purpose. 
+4. Use limited parameters. 
+5. Use guard clauses to handle edge cases. 
+6. Complex operations should be in separate helper functions. Do not add everything at once. 
+7. Avoid nested logic. 
+
+## Task
+
+1. Example of a long, example function in an existing codebase
+
+Long function with multiple responsibilities:
+
+```javascript
+// Bad: Long function doing too many things
+function solveQuadraticAndDisplay(a, b, c, elementId) {
+  // Validate inputs
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number') {
+    console.error('Invalid input');
+    return;
+  }
+  if (a === 0) {
+    console.error('Coefficient a cannot be zero');
+    return;
+  }
+  
+  // Calculate discriminant
+  let discriminant = b * b - 4 * a * c;
+  
+  // Solve equation
+  let result;
+  if (discriminant > 0) {
+    let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+    result = `Two real solutions: x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
+  } else if (discriminant === 0) {
+    let x = -b / (2 * a);
+    result = `One real solution: x = ${x.toFixed(2)}`;
+  } else {
+    let realPart = -b / (2 * a);
+    let imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
+    result = `Complex solutions: x1 = ${realPart.toFixed(2)} + ${imaginaryPart.toFixed(2)}i, x2 = ${realPart.toFixed(2)} - ${imaginaryPart.toFixed(2)}i`;
+  }
+  
+  // Format and display result
+  let element = document.getElementById(elementId);
+  element.innerHTML = `<div class="result">Results for equation ${a}x² + ${b}x + ${c} = 0<br>${result}</div>`;
+  element.style.color = 'green';
+  element.style.fontSize = '16px';
+  
+  // Log to console
+  console.log(`Solved: ${a}x² + ${b}x + ${c} = 0`);
+  console.log(result);
+}
+```
+
+2. Refactor it into multiple smaller functions with clear responsibilities
+
+Refactored into small, focused functions:
+
+```javascript
+// Good: Small, focused functions with single responsibilities
+
+function validateQuadraticCoefficients(a, b, c) {
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number') {
+    throw new Error('Coefficients must be numbers');
+  }
+  if (a === 0) {
+    throw new Error('Coefficient a cannot be zero in quadratic equation');
+  }
+}
+
+function calculateDiscriminant(a, b, c) {
+  return b * b - 4 * a * c;
+}
+
+function solveQuadraticEquation(a, b, c) {
+  validateQuadraticCoefficients(a, b, c);
+  
+  const discriminant = calculateDiscriminant(a, b, c);
+  
+  if (discriminant > 0) {
+    return calculateTwoRealRoots(a, b, discriminant);
+  } else if (discriminant === 0) {
+    return calculateOneRealRoot(a, b);
+  } else {
+    return calculateComplexRoots(a, b, discriminant);
+  }
+}
+
+function calculateTwoRealRoots(a, b, discriminant) {
+  const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+  const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+  return { type: 'two-real', x1, x2 };
+}
+
+function calculateOneRealRoot(a, b) {
+  const x = -b / (2 * a);
+  return { type: 'one-real', x };
+}
+
+function calculateComplexRoots(a, b, discriminant) {
+  const realPart = -b / (2 * a);
+  const imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
+  return { type: 'complex', realPart, imaginaryPart };
+}
+
+function formatQuadraticSolution(a, b, c, solution) {
+  const equation = `${a}x² + ${b}x + ${c} = 0`;
+  let resultText;
+  
+  if (solution.type === 'two-real') {
+    resultText = `Two real solutions: x1 = ${solution.x1.toFixed(2)}, x2 = ${solution.x2.toFixed(2)}`;
+  } else if (solution.type === 'one-real') {
+    resultText = `One real solution: x = ${solution.x.toFixed(2)}`;
+  } else {
+    resultText = `Complex solutions: x1 = ${solution.realPart.toFixed(2)} + ${solution.imaginaryPart.toFixed(2)}i, x2 = ${solution.realPart.toFixed(2)} - ${solution.imaginaryPart.toFixed(2)}i`;
+  }
+  
+  return `Results for equation ${equation}<br>${resultText}`;
+}
+
+function displayResult(elementId, content) {
+  const element = document.getElementById(elementId);
+  element.innerHTML = `<div class="result">${content}</div>`;
+  element.style.color = 'green';
+  element.style.fontSize = '16px';
+}
+
+function logQuadraticSolution(a, b, c, solution) {
+  console.log(`Solved: ${a}x² + ${b}x + ${c} = 0`);
+  console.log(formatQuadraticSolution(a, b, c, solution));
+}
+
+// Main function orchestrating the steps
+function solveQuadraticAndDisplay(a, b, c, elementId) {
+  try {
+    const solution = solveQuadraticEquation(a, b, c);
+    const formattedResult = formatQuadraticSolution(a, b, c, solution);
+    displayResult(elementId, formattedResult);
+    logQuadraticSolution(a, b, c, solution);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+``` 
+
+## Reflections
+
+### Why is breaking down functions beneficial?
+
+Breaking down functions is beneficial in order to maintain clarity of the function's expected purpose. Moreover, it can be easily reused and called which results to a more efficient processing time. 
+
+### How did refactoring improve the structure of the code?
+
+Refactoring the bad code improves its clarity and reusability of the function. 

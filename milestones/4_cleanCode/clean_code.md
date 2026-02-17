@@ -1253,3 +1253,75 @@ Linter detects issues such as unused variables, syntax errors, and formatting in
 ### Did formatting the code make it easier to read?
 
 Yes. Formatting the code makes it easier to read since it is well structured and easy to comprehend.
+
+---
+
+# Understanding Clean Code Principles
+
+## Research
+
+### Summarize the following clean code principle:
+
+- Simplicity - Keep code simple as possible. 
+- Readability - Code should be easy to understand.
+- Maintainability - Future developers should be able to work with the code easily.
+- Consistency - Follow style guides and project conventions.
+- Efficiency - Write performant, optimized code without premature over-engineering. 
+
+## Task
+
+1. Find an example of a messy code and describe why it's difficult to read. 
+2. Rewrite the code in a cleaner, more structured way.
+
+### Messy Code Example
+
+```javascript
+function processNumbers(arr) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 == 0 && arr[i] > 10) {
+      result.push(arr[i] * arr[i]);
+    }
+  }
+  return result;
+}
+```
+
+**Why This Code Is Difficult to Read:**
+
+- The function name `processNumbers` is vague and doesn't describe what processing is happening
+- Single-letter variable names like `i` and `arr` reduce readability
+- The compound condition `arr[i] % 2 == 0 && arr[i] > 10` requires mental parsing
+- Repeated array access `arr[i]` throughout the loop is redundant
+- The transformation `arr[i] * arr[i]` isn't self-documenting
+- No comments or clear structure to explain the business logic
+
+### Clean, Refactored Code
+
+```javascript
+function getSquaredEvenNumbersAboveTen(numbers) {
+  const MIN_THRESHOLD = 10;
+  const result = [];
+
+  for (const number of numbers) {
+    if (isEvenNumberAboveThreshold(number, MIN_THRESHOLD)) {
+      const squared = calculateSquare(number);
+      result.push(squared);
+    }
+  }
+
+  return result;
+}
+
+function isEvenNumberAboveThreshold(number, threshold) {
+  return number % 2 === 0 && number > threshold;
+}
+
+function calculateSquare(number) {
+  return number * number;
+}
+```
+
+**Improvements Made:**
+
+I used descriptive function names so it’s immediately clear what each function is supposed to do. I also chose meaningful variable names like numbers, number, and squared to make the code easier to understand at a glance. Instead of leaving a magic number in the logic, I extracted 10 into a named constant, MIN_THRESHOLD, so its purpose is clearer. I simplified a complex condition by moving it into a helper function, isEvenNumberAboveThreshold, and separated the mathematical operation into calculateSquare to improve readability. I used a for...of loop to avoid managing an index variable manually, and I applied strict equality (===) to prevent unexpected type coercion.

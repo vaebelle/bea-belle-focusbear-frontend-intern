@@ -1211,3 +1211,45 @@ Breaking down functions is beneficial in order to maintain clarity of the functi
 ### How did refactoring improve the structure of the code?
 
 Refactoring the bad code improves its clarity and reusability of the function. 
+
+---
+
+# Code Formatting and Style Guides
+
+## Research
+
+### Importance of consistent code style
+
+Consistent code style is important in order for developers to easily comprehend what the code does. When code is poorly formatted, it would lead to a more laborious and time-consuming effort to understand the code. 
+
+## Task
+
+1. Review the Airbnb javascript style guide
+
+I have reviewed the Airbnb javascript style guide and have realized that there are conventions that makes code structures more comprehensive and well maintained. Following structured standards improves collaboration and greatly reduces confusion in the team. 
+
+Reference: https://github.com/airbnb/javascript
+
+2. Install and configure ESLint and Prettier in your development environment.
+
+I have already installed and configured ESLint and Prettier in my IDE. Please see reference for proof.
+
+Reference:![Configured ESLint and Prettier](docs/image_4.png)
+
+3. Run the formatter and linter on your codebase and fix any issues. 
+
+I have run the formatter and it has fixed my bad coding practices such as unused variables. As for the Prettier, it automatically formats my code to make its structure consistent.
+
+## Reflection
+
+### Why is code formatting important?
+
+Code formatting is important to make code easier to read, understand, and maintain.
+
+### What issues did the linter detect?
+
+Linter detects issues such as unused variables, syntax errors, and formatting inconsistencies. 
+
+### Did formatting the code make it easier to read?
+
+Yes. Formatting the code makes it easier to read since it is well structured and easy to comprehend.

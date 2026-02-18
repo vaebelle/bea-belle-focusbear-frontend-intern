@@ -28,7 +28,7 @@ Kanban focuses on continuous workflow. Tasks move through visual stages, and tea
 source: https://www.coursera.org/articles/kanban-vs-scrum
 
 ### Why does Focus Bear lean towards Kanban instead of Scrum?
-Focus Bear leans toward Kanban because it supports continuous delivery and flexibility. Work can be reprioritized easily, and tasks move based on real-time capacity rather than sprint commitments. This approach fits environments where priorities change and teams benefit from maintaining steady flow instead of rigid timelines.
+Focus Bear leans toward Kanban because it supports continuous delivery and flexibility. Work can be prioritized easily, and tasks move based on real-time capacity rather than sprint commitments. This approach fits environments where priorities change and teams benefit from maintaining steady flow instead of rigid timelines.
 
 ---
 ## Reflection

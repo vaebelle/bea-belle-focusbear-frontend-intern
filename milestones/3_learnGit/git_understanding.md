@@ -53,13 +53,13 @@ During this process, each commit were verified starting from the good commit to 
 ## Reflections
 
 ### What does git bisect do?
-Git bisect is a debugging tool that helps you find the exact commit that introduced a bug. It starts off by marking a known commmit that is good and Git then guides you through testing commits until the problme is found. 
+Git bisect is a debugging tool that helps you find the exact commit that introduced a bug. It starts off by marking a known commit that is good and Git then guides you through testing commits until the problem is found. 
 
 ### When would you use it in a real-world debugging situation?
 I would use git bisect when I am unclear of which commit that was changed involves the bug, especially in projects that have a lot of commits already. Instead of blindly guessing which commit has the issue, I can systematically narrow down the issue. 
 
 ### How does it compare to manually reviewing commits?
-Compared to manually reviewing commits, git bisect is much faster, automatd, and more structured. Manual review can be time-consuming and error-prone.
+Compared to manually reviewing commits, git bisect is much faster, automated, and more structured. Manual review can be time-consuming and error-prone.
 
 ---
 # Commit Messages
@@ -133,7 +133,7 @@ Poor commit messages is equivalent to poor documentation of the codebase. If the
 
 ## Tasks
 ### Experiment with each command in my test repo:
-1. Modify a file -  I added another function that has the purpose of subtracting two integers. As shown in the image below, when I entered "git status" theres a prompt that main.cpp was modifed
+1. Modify a file -  I added another function that has the purpose of subtracting two integers. As shown in the image below, when I entered "git status" theres a prompt that main.cpp was modified
 <img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/75654af5-e6f9-4bea-9bcb-d9a8be83f622" />
   
 2. Restore using checkout - I restored the original code by typing in "git checkout -- main.cpp" as shown in the image below. When I entered "git status", the prompt that says that the main.cpp was modified is already gone. 
@@ -178,7 +178,7 @@ Merge conflicts require manual intervention to decide which changes to keep befo
 
 ## Tasks
 1. Create a merge conflict in your test repo by creating a branch and editing a file, switching back to `main`.
-I created a merge conflict by changing a code my test_repo branch that is very different from the main branch. I modified the same line from different branches that cannot be easily mered without manually checking it. Please refer to the image below. 
+I created a merge conflict by changing a code my test_repo branch that is very different from the main branch. I modified the same line from different branches that cannot be easily merged without manually checking it. Please refer to the image below. 
 <img width="1912" height="458" alt="image" src="https://github.com/user-attachments/assets/0a65afca-d3dc-4af2-b14d-341fb1aad532" />
 
 2. Switch back to main and make a conflicting edit in the same file.
@@ -210,14 +210,14 @@ Please refer to this repo: https://github.com/vaebelle/bea-belle-focusbear-front
 Proof: <img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/10534909-4ba6-462d-b9e5-fab89f29ed73" />
 
 2. Make a small change in you repo and commit it to the new branch.
-I have tihs experience already and have performed it a couple of times. Including this repository.
+I have this experience already and have performed it a couple of times. Including this repository.
 
 Please refer to this repo: https://github.com/vaebelle/test-repo/tree/test_branch
 
 Proof: <img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/53dd84cc-4703-4834-885a-f34d0db75d17" />
 
-3. Switch back to main and check your chanes are not there.
-I have tihs experience already and have performed it a couple of times. Including this repository.
+3. Switch back to main and check your changes are not there.
+I have this experience already and have performed it a couple of times. Including this repository.
 
 Please refer to this repo: https://github.com/vaebelle/bea-belle-focusbear-frontend-intern
 Proof:
@@ -241,8 +241,8 @@ There would be no conflict at all since they are working on the different branch
 Staging means marking your changes as ready to be included in the next commit. It allows you to review and organize which changes will be added.  While committing means saving those staged changes to the branch history, creating a permanent record of the changes in the repository.
 
 ## Tasks
-1. Experiment with adding and commiting files in your repo
-I am used ot adding and commiting iles via the terminal. See image below as an example of me staging and commiting a file. 
+1. Experiment with adding and committing files in your repo
+I am used ot adding and committing files via the terminal. See image below as an example of me staging and committing a file. 
 <img width="1277" height="241" alt="image" src="https://github.com/user-attachments/assets/60152e67-1431-4fdc-93f9-f298fdd0b7fb" />
 
 2. Modify a file and stage it but don't commit
@@ -257,7 +257,7 @@ I am used ot adding and commiting iles via the terminal. See image below as an e
 As observed, after I commit the file the staged main.cpp file was saved to the branch history. 
 
 ## Reflection
-### What is the difference between staging and committting?
+### What is the difference between staging and committing?
 Staging means marking your files that are ready to be included in the next commit while committing means saving the staged files. 
 
 ### Why does Git separate these two steps?

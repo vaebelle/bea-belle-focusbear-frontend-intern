@@ -37,7 +37,7 @@
 ---
 ## Reflection
 
-### Which shorcuts do you think will be most useful in your daily work?
+### Which shortcut do you think will be most useful in your daily work?
 For me, the following are the most useful shortcuts that will aid me in my daily work. 
 | Category   | Action                     | Shortcut                  |
 | Navigation | Quick file open            | Ctrl + P                  |

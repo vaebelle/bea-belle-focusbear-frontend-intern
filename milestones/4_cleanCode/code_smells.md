@@ -16,7 +16,7 @@ Code smells are indicators of potential problems in source code that may not be 
 
 ## Tasks
 
-### Find or write code examples that demonatrate the following code smells
+### Find or write code examples that demonstrate the following code smells
 
 #### 1. Magic Numbers and Strings
 
@@ -369,7 +369,7 @@ class userAccount {
   
   GetUser(): User { /* ... */ }
   update_profile(Data: ProfileData): void { /* ... */ }
-  checkactive(): boolean { /* ... */ }
+  check_active(): boolean { /* ... */ }
   VALIDATE(): boolean { /* ... */ }
 }
 

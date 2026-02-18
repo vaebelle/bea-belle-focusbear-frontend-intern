@@ -1,0 +1,2 @@
+# Only check staged files
+npx lint-staged --allow-empty

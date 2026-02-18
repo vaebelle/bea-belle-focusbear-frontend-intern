@@ -7,7 +7,7 @@
 
     source: https://freedom.to/
 
-2. Cold Turkey - a strict productivity and habit support application that blocks distracting websites and applications with unbreakable locks, scheduled sessions, an instant emergency support that talks to calm you during emergencies, and moes like "Frozen Turkey" to create deep focus and eliminate temptations of using your device. 
+2. Cold Turkey - a strict productivity and habit support application that blocks distracting websites and applications with unbreakable locks, scheduled sessions, an instant emergency support that talks to calm you during emergencies, and goes like "Frozen Turkey" to create deep focus and eliminate temptations of using your device. 
 
     source: https://coldturkey.io/#features
 3. Tiimo - a visual planner and routine app that offers a color-coded timeline, and AI co-planner.

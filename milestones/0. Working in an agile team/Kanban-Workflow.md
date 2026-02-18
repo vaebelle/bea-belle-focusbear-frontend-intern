@@ -29,7 +29,7 @@ Limiting work in progress helps teams stay focused and prevents overload. It red
 Kanban helps manage priorities by making all tasks visible and organized by status. This transparency allows me and the teams to quickly identify what needs attention and focus on the most important work first. By limiting how many tasks are worked on at the same time, Kanban prevents overload, reduces multitasking, and encourages steady progress. This structured flow helps maintain balance, ensuring work is completed efficiently without burnout.
 
 ### How can you improve your workflow using Kanban principles?
-I can improve my workflow by breaking tasks into clear, manageable stages and tracking them visually. Prioritizing work, limiting work in progress, and regularly reviewing task status help maintain focus and momentum. Kanban principles also encourage continuous improvement where I have to identify bottlennecks, adjust processes, and refine priorities over time. Therefore making my workflow more organized and manageable. 
+I can improve my workflow by breaking tasks into clear, manageable stages and tracking them visually. Prioritizing work, limiting work in progress, and regularly reviewing task status help maintain focus and momentum. Kanban principles also encourage continuous improvement where I have to identify bottlenecks, adjust processes, and refine priorities over time. Therefore making my workflow more organized and manageable. 
 
 ---
 ## Task

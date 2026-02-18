@@ -11,7 +11,7 @@ I have already used omyzsh plugins and themes.
 ### Which terminal client did you use and why?
 I have been using the Windows terminal / Powershell because it was the first terminal I used during my academic years and I grew comfortable using it through the years.
 
-### What customizatios did you make?
+### What customizations did you make?
 I have been introduced to omyzsh to customize my terminal. Using this, I customized the themes and added plugins for auto-suggestions and syntax highlighting.
 
 ### What was the most useful command you learned today?

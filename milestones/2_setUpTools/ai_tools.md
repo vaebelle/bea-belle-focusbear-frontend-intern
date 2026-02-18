@@ -109,10 +109,10 @@ I have tried out GitHub Copilot, ChatGPT, and Claude AI. Even before, I have bee
 
 ---
 ### What worked well? What didn't
-AI provides usefull insights and helps me conveniently manage my time in doing tasks. However, there are times that you really have to double check and cross check the data they provided because whenever I try to analyze their data, there are times that it is inaccurate and would require research using verified sources like journals and published texts.
+AI provides useful insights and helps me conveniently manage my time in doing tasks. However, there are times that you really have to double check and cross check the data they provided because whenever I try to analyze their data, there are times that it is inaccurate and would require research using verified sources like journals and published texts.
 
 ---
 ### When do you think AI is most useful for coding?
-Getting the fundamentals in coding is a must for all developers. AI is handly in terms of formatting your code based on your logic and improving it. It is also useful for interpreting the intention of a developer for its code. It’s also a valuable tool for explaining complex concepts, breaking them down into simpler and more understandable terms
+Getting the fundamentals in coding is a must for all developers. AI is handy in terms of formatting your code based on your logic and improving it. It is also useful for interpreting the intention of a developer for its code. It’s also a valuable tool for explaining complex concepts, breaking them down into simpler and more understandable terms
 
 

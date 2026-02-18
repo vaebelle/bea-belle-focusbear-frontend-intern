@@ -500,7 +500,7 @@ function calculateOrderTotal(items, tax, discount, shippingCost, promoCode) {
       total = total - (total * 0.1);
     } else if (promoCode === 'SAVE20') {
       total = total - (total * 0.2);
-    } else if (promoCode === 'FREESHIP') {
+    } else if (promoCode === 'FREE') {
       shippingCost = 0;
     }
   }
@@ -568,7 +568,7 @@ function applyPromoCode(amount, promoCode, shippingCost) {
   const promoCodes = {
     'SAVE10': { discount: 0.1, freeShipping: false },
     'SAVE20': { discount: 0.2, freeShipping: false },
-    'FREESHIP': { discount: 0, freeShipping: true }
+    'FREE': { discount: 0, freeShipping: true }
   };
   
   const promo = promoCodes[promoCode];
@@ -947,7 +947,7 @@ Refactoring to eliminate duplication dramatically improved maintainability:
 ### Best practices for naming variables and functions
 
 1. Be descriptive: Use names that clearly explain purpose (calculateTotal instead of calc)
-2. Use pronounceable names: Avoid abbreviations like genymdhms
+2. Use pronounceable names: Avoid abbreviations
 3. Make names searchable: Avoid single letters except in short loops
 4. Follow conventions: camelCase for functions/variables, PascalCase for classes, UPPER_SNAKE_CASE for constants
 5. Use verbs for functions: getName(), calculateArea(), isValid()

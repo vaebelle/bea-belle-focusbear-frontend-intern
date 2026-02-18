@@ -7,7 +7,7 @@
 ## How I Work Best
 - I do my best work when...
   - I have enough sleep
-  - my tasks are organized and timelined
+  - my tasks are organized and timeline
   - I am well fed
   - colleagues are respectful and welcoming
   - when I enjoy the tasks given
@@ -28,14 +28,14 @@
     - I usually reply within a few hours, and you can also send quick notes.
   - Discord
     - Great for quick chats, team updates, or casual check-ins.
-  - Calls (Gmeet)
-    - Schedule in advance for meetings, discussions, or standups. Can hop on spontaneously if urgent, but please give a heads-up.
+  - Calls (Google Meet)
+    - Schedule in advance for meetings, discussions, or standup. Can hop on spontaneously if urgent, but please give a heads-up.
 
 ## Collaboration and Teamwork
 - I work best in a team when...
   - everyone is aware and takes initiative with their tasks.
   - everyone is helpful and gives out constructive criticism
-- My biggest pet peave in teamwork is...
+- My biggest pet peeve in teamwork is...
   - not doing the tasks satisfactorily and constantly miss out deadlines
 - If I seem quiet in a meeting, it usually means...
   - I am listening to the input of the speaker
@@ -70,9 +70,9 @@
  
 ## Fun Facts and Quirks
 - One thing people often misunderstand about me...
-  - Some people often think I do not go outside often due to me being an introvert, however, I love going out such as travelling and visiting different local places with my family and hanging out with my friends.
+  - Some people often think I do not go outside often due to me being an introvert, however, I love going out such as traveling and visiting different local places with my family and hanging out with my friends.
 - A fun fact about me...
-  - I love playing Stardew Valley when I have free time! I also love nature so much that I prefer to visit the ocean or farms rather than indulging in the city life.
+  - I love playing games when I have free time! I also love nature so much that I prefer to visit the ocean or farms rather than indulging in the city life.
 - My work superpower is...
   - being systematic with my tasks. I work best when tasks are organized and scheduled, and I thrive when I can manage projects personally while documenting everything clearly.
  

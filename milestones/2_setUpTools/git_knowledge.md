@@ -16,7 +16,7 @@ Git in VS Code
 Yes, I have used Git before to manage code changes, collaborate efficiently with team members, and keep track of our project history without having conflicts in editing the same codebase within a group of multiple people. We use this in projects involging mobile and web development. 
 
 #### Which Git client did you choose? Why
-Git in VS code becaues it is more convenient and easier to track commits and code changes within the IDE I am using. 
+Git in VS code because it is more convenient and easier to track commits and code changes within the IDE I am using. 
 
 #### What was the most interesting thing you learned about Git today?
 Even though I have prior experience in Git, I am more amazed how powerful it is due to it simplifying collaborations and version tracking. I came to realize that without it, it would be hard for us to collaborate without conflicts in our developments. 
